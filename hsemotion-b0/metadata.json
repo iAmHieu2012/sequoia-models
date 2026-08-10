@@ -1,0 +1,20 @@
+{
+  "name": "hsemotion-b0",
+  "task": "classify",
+  "input_size": [
+    224,
+    224
+  ],
+  "format": "tflite",
+  "classes_count": 8,
+  "labels": [
+    "Anger",
+    "Contempt",
+    "Disgust",
+    "Fear",
+    "Happiness",
+    "Neutral",
+    "Sadness",
+    "Surprise"
+  ]
+}
