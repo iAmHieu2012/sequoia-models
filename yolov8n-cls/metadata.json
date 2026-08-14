@@ -1,12 +1,12 @@
 {
-  "name": "yolov8n-cls",
-  "task": "classify",
-  "input_size": [
-    224,
-    224
-  ],
+  "name": "YOLOv8n Classify",
+  "task": "image-classification",
+  "description": "YOLOv8 Nano image classification model trained on ImageNet-1K dataset with 1000 classes.",
+  "architecture": "yolov8",
+  "variant": "nano",
+  "dataset": "ImageNet-1K",
   "format": "tflite",
-  "classes_count": 1000,
+  "version": "1.0",
   "labels": [
     "tench",
     "goldfish",
@@ -1008,5 +1008,43 @@
     "bolete",
     "ear",
     "toilet tissue"
+  ],
+  "classes_count": 1000,
+  "input_size": [
+    224,
+    224
+  ],
+  "input_layout": "nhwc",
+  "output_format": "classification",
+  "color_space": "rgb",
+  "normalize": {
+    "mean": [
+      0,
+      0,
+      0
+    ],
+    "std": [
+      1,
+      1,
+      1
+    ]
+  },
+  "post_processing": {
+    "type": "top_k",
+    "default_top_k": 5
+  },
+  "visualization": {
+    "type": "top_k_overlay"
+  },
+  "parameters": [
+    {
+      "key": "top_k",
+      "label": "Top-K Results",
+      "type": "slider",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "default": 5
+    }
   ]
 }

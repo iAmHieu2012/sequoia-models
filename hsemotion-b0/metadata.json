@@ -1,12 +1,12 @@
 {
-  "name": "hsemotion-b0",
-  "task": "classify",
-  "input_size": [
-    224,
-    224
-  ],
+  "name": "HSEmotion B0",
+  "task": "image-classification",
+  "description": "EfficientNet-B0 based facial emotion recognition model trained on AffectNet dataset. Classifies 8 basic emotions.",
+  "architecture": "efficientnet",
+  "variant": "b0",
+  "dataset": "AffectNet",
   "format": "tflite",
-  "classes_count": 8,
+  "version": "1.0",
   "labels": [
     "Anger",
     "Contempt",
@@ -16,5 +16,43 @@
     "Neutral",
     "Sadness",
     "Surprise"
+  ],
+  "classes_count": 8,
+  "input_size": [
+    224,
+    224
+  ],
+  "input_layout": "nhwc",
+  "output_format": "classification",
+  "color_space": "rgb",
+  "normalize": {
+    "mean": [
+      0,
+      0,
+      0
+    ],
+    "std": [
+      1,
+      1,
+      1
+    ]
+  },
+  "post_processing": {
+    "type": "top_k",
+    "default_top_k": 5
+  },
+  "visualization": {
+    "type": "top_k_overlay"
+  },
+  "parameters": [
+    {
+      "key": "top_k",
+      "label": "Top-K Results",
+      "type": "slider",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 5
+    }
   ]
 }

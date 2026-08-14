@@ -1,13 +1,179 @@
 {
-  "name": "yolov8n-pose",
-  "task": "pose",
+  "name": "YOLOv8n Pose",
+  "task": "pose-estimation",
+  "description": "YOLOv8 Nano pose estimation model trained on COCO Keypoints dataset. Detects 17 body keypoints per person.",
+  "architecture": "yolov8",
+  "variant": "nano",
+  "dataset": "COCO-Pose",
+  "format": "tflite",
+  "version": "1.0",
+  "labels": [
+    "person"
+  ],
+  "classes_count": 1,
   "input_size": [
     640,
     640
   ],
-  "format": "tflite",
-  "classes_count": 1,
-  "labels": [
-    "person"
+  "input_layout": "nhwc",
+  "output_format": "yolo_v8",
+  "color_space": "rgb",
+  "normalize": {
+    "mean": [
+      0,
+      0,
+      0
+    ],
+    "std": [
+      1,
+      1,
+      1
+    ]
+  },
+  "post_processing": {
+    "type": "nms",
+    "num_keypoints": 17,
+    "default_threshold": 0.5,
+    "default_iou": 0.45,
+    "default_max_detections": 20,
+    "default_keypoint_threshold": 0.3
+  },
+  "visualization": {
+    "type": "skeleton",
+    "skeleton": [
+      [
+        15,
+        13
+      ],
+      [
+        13,
+        11
+      ],
+      [
+        16,
+        14
+      ],
+      [
+        14,
+        12
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "keypoint_labels": [
+      "nose",
+      "left_eye",
+      "right_eye",
+      "left_ear",
+      "right_ear",
+      "left_shoulder",
+      "right_shoulder",
+      "left_elbow",
+      "right_elbow",
+      "left_wrist",
+      "right_wrist",
+      "left_hip",
+      "right_hip",
+      "left_knee",
+      "right_knee",
+      "left_ankle",
+      "right_ankle"
+    ]
+  },
+  "parameters": [
+    {
+      "key": "threshold",
+      "label": "Confidence Threshold",
+      "type": "slider",
+      "min": 0.01,
+      "max": 1.0,
+      "step": 0.01,
+      "default": 0.5
+    },
+    {
+      "key": "iou_threshold",
+      "label": "IoU Threshold (NMS)",
+      "type": "slider",
+      "min": 0.01,
+      "max": 1.0,
+      "step": 0.01,
+      "default": 0.45
+    },
+    {
+      "key": "max_detections",
+      "label": "Max Detections",
+      "type": "slider",
+      "min": 1,
+      "max": 50,
+      "step": 1,
+      "default": 20
+    },
+    {
+      "key": "keypoint_threshold",
+      "label": "Keypoint Confidence",
+      "type": "slider",
+      "min": 0.01,
+      "max": 1.0,
+      "step": 0.01,
+      "default": 0.3
+    }
   ]
 }

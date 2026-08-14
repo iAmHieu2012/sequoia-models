@@ -1,12 +1,12 @@
 {
-  "name": "yolov8n-seg",
-  "task": "segment",
-  "input_size": [
-    640,
-    640
-  ],
+  "name": "YOLOv8n Segment",
+  "task": "instance-segmentation",
+  "description": "YOLOv8 Nano instance segmentation model trained on COCO dataset with 80 classes and 32 mask prototype coefficients.",
+  "architecture": "yolov8",
+  "variant": "nano",
+  "dataset": "COCO",
   "format": "tflite",
-  "classes_count": 80,
+  "version": "1.0",
   "labels": [
     "person",
     "bicycle",
@@ -88,5 +88,88 @@
     "teddy bear",
     "hair drier",
     "toothbrush"
+  ],
+  "classes_count": 80,
+  "input_size": [
+    640,
+    640
+  ],
+  "input_layout": "nhwc",
+  "output_format": "yolo_v8",
+  "color_space": "rgb",
+  "normalize": {
+    "mean": [
+      0,
+      0,
+      0
+    ],
+    "std": [
+      1,
+      1,
+      1
+    ]
+  },
+  "post_processing": {
+    "type": "nms",
+    "num_mask_coefficients": 32,
+    "default_threshold": 0.5,
+    "default_iou": 0.45,
+    "default_max_detections": 50,
+    "default_mask_opacity": 0.6
+  },
+  "visualization": {
+    "type": "mask_overlay",
+    "show_labels": true,
+    "show_confidence": true
+  },
+  "parameters": [
+    {
+      "key": "threshold",
+      "label": "Confidence Threshold",
+      "type": "slider",
+      "min": 0.01,
+      "max": 1.0,
+      "step": 0.01,
+      "default": 0.5
+    },
+    {
+      "key": "iou_threshold",
+      "label": "IoU Threshold (NMS)",
+      "type": "slider",
+      "min": 0.01,
+      "max": 1.0,
+      "step": 0.01,
+      "default": 0.45
+    },
+    {
+      "key": "max_detections",
+      "label": "Max Detections",
+      "type": "slider",
+      "min": 1,
+      "max": 300,
+      "step": 1,
+      "default": 50
+    },
+    {
+      "key": "mask_opacity",
+      "label": "Mask Opacity",
+      "type": "slider",
+      "min": 0.1,
+      "max": 1.0,
+      "step": 0.05,
+      "default": 0.6
+    },
+    {
+      "key": "show_labels",
+      "label": "Show Labels",
+      "type": "toggle",
+      "default": true
+    },
+    {
+      "key": "show_confidence",
+      "label": "Show Confidence",
+      "type": "toggle",
+      "default": true
+    }
   ]
 }

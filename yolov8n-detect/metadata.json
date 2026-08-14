@@ -1,12 +1,12 @@
 {
-  "name": "yolov8n-detect",
-  "task": "detect",
-  "input_size": [
-    640,
-    640
-  ],
+  "name": "YOLOv8n Detect",
+  "task": "object-detection",
+  "description": "YOLOv8 Nano object detection model trained on COCO dataset with 80 classes.",
+  "architecture": "yolov8",
+  "variant": "nano",
+  "dataset": "COCO",
   "format": "tflite",
-  "classes_count": 80,
+  "version": "1.0",
   "labels": [
     "person",
     "bicycle",
@@ -88,5 +88,77 @@
     "teddy bear",
     "hair drier",
     "toothbrush"
+  ],
+  "classes_count": 80,
+  "input_size": [
+    640,
+    640
+  ],
+  "input_layout": "nhwc",
+  "output_format": "yolo_v8",
+  "color_space": "rgb",
+  "normalize": {
+    "mean": [
+      0,
+      0,
+      0
+    ],
+    "std": [
+      1,
+      1,
+      1
+    ]
+  },
+  "post_processing": {
+    "type": "nms",
+    "default_threshold": 0.5,
+    "default_iou": 0.45,
+    "default_max_detections": 100
+  },
+  "visualization": {
+    "type": "bbox_corners",
+    "show_labels": true,
+    "show_confidence": true
+  },
+  "parameters": [
+    {
+      "key": "threshold",
+      "label": "Confidence Threshold",
+      "type": "slider",
+      "min": 0.01,
+      "max": 1.0,
+      "step": 0.01,
+      "default": 0.5
+    },
+    {
+      "key": "iou_threshold",
+      "label": "IoU Threshold (NMS)",
+      "type": "slider",
+      "min": 0.01,
+      "max": 1.0,
+      "step": 0.01,
+      "default": 0.45
+    },
+    {
+      "key": "max_detections",
+      "label": "Max Detections",
+      "type": "slider",
+      "min": 1,
+      "max": 300,
+      "step": 1,
+      "default": 100
+    },
+    {
+      "key": "show_labels",
+      "label": "Show Labels",
+      "type": "toggle",
+      "default": true
+    },
+    {
+      "key": "show_confidence",
+      "label": "Show Confidence",
+      "type": "toggle",
+      "default": true
+    }
   ]
 }
