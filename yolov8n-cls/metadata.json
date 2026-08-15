@@ -1046,5 +1046,9 @@
       "step": 1,
       "default": 5
     }
+  ],
+  "supported_modes": [
+    "camera",
+    "image"
   ]
 }

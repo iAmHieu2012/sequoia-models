@@ -1,0 +1,60 @@
+{
+  "name": "RTMPose Small",
+  "task": "pose-estimation",
+  "description": "State-of-the-art 2D human pose estimation (17 keypoints).",
+  "architecture": "rtmpose",
+  "variant": "rtmpose-s",
+  "format": "tflite",
+  "version": "1.0",
+  "input_size": [
+    1,
+    3,
+    256,
+    192
+  ],
+  "input_layout": "nchw",
+  "output_format": "rtmpose_simcc",
+  "color_space": "rgb",
+  "normalize": {
+    "mean": [
+      123.675,
+      116.28,
+      103.53
+    ],
+    "std": [
+      58.395,
+      57.12,
+      57.375
+    ],
+    "scale": 1.0
+  },
+  "post_processing": {
+    "type": "rtmpose_decode",
+    "simcc_split_ratio": 2,
+    "num_keypoints": 17
+  },
+  "visualization": {
+    "type": "pose_skeleton",
+    "skeleton": [
+      [15, 13], [13, 11], [16, 14], [14, 12], [11, 12],
+      [5, 11], [6, 12], [5, 6], [5, 7], [6, 8], [7, 9],
+      [8, 10], [1, 2], [0, 1], [0, 2], [1, 3], [2, 4],
+      [3, 5], [4, 6]
+    ]
+  },
+  "parameters": [
+    {
+      "key": "keypoint_threshold",
+      "label": "Keypoint Threshold",
+      "type": "slider",
+      "min": 0.1,
+      "max": 1.0,
+      "step": 0.1,
+      "default": 0.3
+    }
+  ],
+  "supported_modes": [
+    "camera",
+    "image"
+  ]
+}

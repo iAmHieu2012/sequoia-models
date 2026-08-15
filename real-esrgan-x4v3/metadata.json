@@ -1,0 +1,45 @@
+{
+  "name": "Real-ESRGAN x4 (Super Resolution)",
+  "task": "image-to-image",
+  "description": "Upscales and enhances image resolution by 4x using Real-ESRGAN.",
+  "architecture": "real-esrgan",
+  "variant": "general-x4v3",
+  "dataset": "DIV2K / Flickr2K",
+  "format": "tflite",
+  "version": "1.0",
+  "labels": [],
+  "classes_count": 0,
+  "input_size": [
+    1,
+    128,
+    128,
+    3
+  ],
+  "input_layout": "nhwc",
+  "output_format": "image_tensor",
+  "color_space": "rgb",
+  "normalize": {
+    "mean": [
+      0,
+      0,
+      0
+    ],
+    "std": [
+      1,
+      1,
+      1
+    ]
+  },
+  "post_processing": {
+    "type": "none"
+  },
+  "visualization": {
+    "type": "image_overlay",
+    "output_layout": "nchw"
+  },
+  "parameters": [],
+  "supported_modes": [
+    "camera",
+    "image"
+  ]
+}

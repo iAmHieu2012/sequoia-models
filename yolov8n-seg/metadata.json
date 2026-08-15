@@ -171,5 +171,9 @@
       "type": "toggle",
       "default": true
     }
+  ],
+  "supported_modes": [
+    "camera",
+    "image"
   ]
 }

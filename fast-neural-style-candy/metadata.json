@@ -1,0 +1,42 @@
+{
+  "name": "Neural Style - Candy",
+  "task": "image-to-image",
+  "description": "Applies the Candy artistic style to the image.",
+  "architecture": "fast-neural-style",
+  "variant": "candy",
+  "format": "tflite",
+  "version": "1.0",
+  "input_size": [
+    1,
+    3,
+    256,
+    256
+  ],
+  "input_layout": "nchw",
+  "output_format": "image_tensor",
+  "color_space": "rgb",
+  "normalize": {
+    "mean": [
+      0,
+      0,
+      0
+    ],
+    "std": [
+      1,
+      1,
+      1
+    ]
+  },
+  "post_processing": {
+    "type": "none"
+  },
+  "visualization": {
+    "type": "image_overlay",
+    "output_layout": "nchw"
+  },
+  "parameters": [],
+  "supported_modes": [
+    "camera",
+    "image"
+  ]
+}

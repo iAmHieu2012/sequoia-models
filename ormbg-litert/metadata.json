@@ -1,0 +1,46 @@
+{
+  "name": "ormbg (Open Remove-Background)",
+  "task": "image-segmentation",
+  "description": "High-quality photorealistic subject cut-out (Background Removal).",
+  "architecture": "isnet",
+  "variant": "ormbg-litert",
+  "format": "tflite",
+  "version": "1.0",
+  "labels": [
+    "foreground"
+  ],
+  "classes_count": 1,
+  "input_size": [
+    1,
+    1024,
+    1024,
+    3
+  ],
+  "input_layout": "nhwc",
+  "output_format": "segmentation_mask",
+  "color_space": "rgb",
+  "normalize": {
+    "mean": [
+      0,
+      0,
+      0
+    ],
+    "std": [
+      1,
+      1,
+      1
+    ]
+  },
+  "supported_modes": [
+    "image"
+  ],
+  "post_processing": {
+    "type": "none"
+  },
+  "visualization": {
+    "type": "background_removal",
+    "show_labels": false,
+    "show_confidence": false
+  },
+  "parameters": []
+}

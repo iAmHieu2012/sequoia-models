@@ -1,0 +1,43 @@
+{
+  "name": "Depth Anything 3 Small",
+  "task": "depth-estimation",
+  "description": "Monocular depth estimation (single RGB image to depth map).",
+  "architecture": "dinov2",
+  "variant": "depth-anything-3-small",
+  "format": "tflite",
+  "version": "1.0",
+  "labels": [],
+  "classes_count": 0,
+  "input_size": [
+    1,
+    3,
+    896,
+    504
+  ],
+  "input_layout": "nchw",
+  "output_format": "image_tensor",
+  "color_space": "rgb",
+  "normalize": {
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "supported_modes": [
+    "image"
+  ],
+  "post_processing": {
+    "type": "none"
+  },
+  "visualization": {
+    "type": "image_overlay",
+    "output_layout": "nchw"
+  },
+  "parameters": []
+}

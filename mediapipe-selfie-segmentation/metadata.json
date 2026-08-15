@@ -1,0 +1,60 @@
+{
+  "name": "Selfie Segmentation (Multiclass)",
+  "task": "image-segmentation",
+  "description": "MediaPipe Selfie Segmentation model. Segments the person into multi-class parts (hair, body, face, clothes, etc).",
+  "architecture": "mediapipe",
+  "variant": "selfie-multiclass",
+  "dataset": "MediaPipe Internal",
+  "format": "tflite",
+  "version": "1.0",
+  "labels": [
+    "foreground"
+  ],
+  "classes_count": 1,
+  "input_size": [
+    1,
+    256,
+    256,
+    3
+  ],
+  "input_layout": "nhwc",
+  "output_format": "segmentation_mask",
+  "color_space": "rgb",
+  "normalize": {
+    "mean": [
+      127.5,
+      127.5,
+      127.5
+    ],
+    "std": [
+      127.5,
+      127.5,
+      127.5
+    ],
+    "scale": 1.0
+  },
+  "post_processing": {
+    "type": "argmax",
+    "default_threshold": 0.5
+  },
+  "visualization": {
+    "type": "mask_overlay",
+    "show_labels": false,
+    "show_confidence": false
+  },
+  "parameters": [
+    {
+      "key": "mask_opacity",
+      "label": "Mask Opacity",
+      "type": "slider",
+      "min": 0.1,
+      "max": 1.0,
+      "step": 0.1,
+      "default": 0.7
+    }
+  ],
+  "supported_modes": [
+    "camera",
+    "image"
+  ]
+}
