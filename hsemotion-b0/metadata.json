@@ -6,6 +6,7 @@
   "variant": "b0",
   "dataset": "AffectNet",
   "format": "tflite",
+  "model_url": "https://huggingface.co/litert-community/HSEmotion-B0-LiteRT/resolve/main/hsemotion_b0_fp16.tflite",
   "version": "1.0",
   "labels": [
     "Anger",

@@ -5,6 +5,7 @@
   "architecture": "rtmpose",
   "variant": "rtmpose-face",
   "format": "tflite",
+  "model_url": "https://huggingface.co/litert-community/RTMPose-Face-WFLW-LiteRT/resolve/main/rtm_face_fp16.tflite",
   "version": "1.0",
   "input_size": [
     1,

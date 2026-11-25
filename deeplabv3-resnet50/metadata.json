@@ -6,6 +6,7 @@
   "variant": "resnet50",
   "dataset": "Pascal VOC",
   "format": "tflite",
+  "model_url": "https://huggingface.co/litert-community/deeplabv3_resnet50/resolve/main/deeplabv3_resnet50.tflite",
   "version": "1.0",
   "labels": [
     "background",

@@ -5,6 +5,7 @@
   "architecture": "fast-neural-style",
   "variant": "candy",
   "format": "tflite",
+  "model_url": "https://huggingface.co/litert-community/Fast-Neural-Style-LiteRT/resolve/main/style_candy_fp16.tflite",
   "version": "1.0",
   "input_size": [
     1,

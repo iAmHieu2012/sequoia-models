@@ -6,6 +6,7 @@
   "variant": "nano",
   "dataset": "COCO",
   "format": "tflite",
+  "model_url": "https://cdn.jsdelivr.net/gh/iAmHieu2012/sequoia-models@main/yolov8n-seg/model.tflite",
   "version": "1.0",
   "labels": [
     "person",

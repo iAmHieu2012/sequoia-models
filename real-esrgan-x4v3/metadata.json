@@ -6,6 +6,7 @@
   "variant": "general-x4v3",
   "dataset": "DIV2K / Flickr2K",
   "format": "tflite",
+  "model_url": "https://huggingface.co/litert-community/real-esrgan-x4v3-litert/resolve/main/realesr_general_x4v3.tflite",
   "version": "1.0",
   "labels": [],
   "classes_count": 0,

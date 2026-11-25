@@ -5,6 +5,7 @@
   "architecture": "dinov2",
   "variant": "depth-anything-3-small",
   "format": "tflite",
+  "model_url": "https://huggingface.co/litert-community/Depth-Anything-3-Small/resolve/main/da3_small_gpu_fp16.tflite",
   "version": "1.0",
   "labels": [],
   "classes_count": 0,

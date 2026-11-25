@@ -6,6 +6,7 @@
   "variant": "v2",
   "dataset": "ImageNet",
   "format": "tflite",
+  "model_url": "https://huggingface.co/litert-community/MobileNet-v2/resolve/main/mobilenet_v2.tflite",
   "version": "1.0",
   "labels": [
     "tench",

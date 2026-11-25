@@ -6,6 +6,7 @@
   "variant": "selfie-multiclass",
   "dataset": "MediaPipe Internal",
   "format": "tflite",
+  "model_url": "https://huggingface.co/litert-community/MediaPipe-Selfie-Segmentation/resolve/main/selfie_multiclass.tflite",
   "version": "1.0",
   "labels": [
     "foreground"

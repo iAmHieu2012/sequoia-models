@@ -6,6 +6,7 @@
   "variant": "18",
   "dataset": "ImageNet",
   "format": "tflite",
+  "model_url": "https://huggingface.co/litert-community/resnet18/resolve/main/resnet18.tflite",
   "version": "1.0",
   "labels": [
     "tench",

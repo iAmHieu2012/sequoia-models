@@ -1,11 +1,12 @@
 {
-  "name": "ViT Base (AugReg)",
+  "name": "ViT Tiny",
   "task": "image-classification",
-  "description": "ViT Base (AugReg) Vision Transformer architecture.",
+  "description": "ViT Tiny Vision Transformer architecture.",
   "architecture": "vit",
-  "variant": "base-patch16-224-augreg",
+  "variant": "tiny-patch16-224",
   "dataset": "ImageNet",
   "format": "tflite",
+  "model_url": "https://huggingface.co/litert-community/vit_tiny_patch16_224/resolve/main/model.tflite",
   "version": "1.0",
   "labels": [
     "tench",

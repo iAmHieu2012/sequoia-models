@@ -5,6 +5,7 @@
   "architecture": "fast-neural-style",
   "variant": "udnie",
   "format": "tflite",
+  "model_url": "https://huggingface.co/litert-community/Fast-Neural-Style-LiteRT/resolve/main/style_udnie_fp16.tflite",
   "version": "1.0",
   "input_size": [
     1,

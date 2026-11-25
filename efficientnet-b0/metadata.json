@@ -6,6 +6,7 @@
   "variant": "b0",
   "dataset": "ImageNet",
   "format": "tflite",
+  "model_url": "https://huggingface.co/litert-community/efficientnet_b0/resolve/main/efficientnet_b0.tflite",
   "version": "1.0",
   "labels": [
     "tench",
