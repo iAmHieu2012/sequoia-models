@@ -1,0 +1,147 @@
+{
+  "name": "PP-OCRv5 Mobile",
+  "task": "ocr",
+  "description": "Two-stage text recognition: a text detector finds each line, then a recognizer reads it (CTC). Reads English and Chinese; Vietnamese diacritics are not in the dictionary.",
+  "architecture": "pp-ocrv5",
+  "variant": "mobile",
+  "dataset": "PaddleOCR",
+  "format": "tflite",
+  "model_url": "https://huggingface.co/litert-community/PP-OCRv5-LiteRT/resolve/main/ppocr_det_fp16.tflite",
+  "version": "5.0",
+  "labels": [],
+  "classes_count": 0,
+  "input_size": [
+    1,
+    3,
+    640,
+    640
+  ],
+  "input_layout": "nchw",
+  "output_format": "pipeline",
+  "color_space": "rgb",
+  "normalize": {
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "post_processing": {
+    "type": "pipeline"
+  },
+  "visualization": {
+    "type": "ocr_text",
+    "show_confidence": true
+  },
+  "parameters": [
+    {
+      "key": "threshold",
+      "label": "Text Threshold",
+      "type": "slider",
+      "min": 0.1,
+      "max": 0.9,
+      "step": 0.05,
+      "default": 0.3
+    },
+    {
+      "key": "min_score",
+      "label": "Min Box Score",
+      "type": "slider",
+      "min": 0.1,
+      "max": 0.95,
+      "step": 0.05,
+      "default": 0.5
+    },
+    {
+      "key": "max_detections",
+      "label": "Max Lines",
+      "type": "slider",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "default": 50
+    },
+    {
+      "key": "show_confidence",
+      "label": "Show Confidence",
+      "type": "toggle",
+      "default": true
+    }
+  ],
+  "supported_modes": [
+    "image"
+  ],
+  "pipeline": {
+    "stages": [
+      {
+        "id": "det",
+        "model_url": "https://huggingface.co/litert-community/PP-OCRv5-LiteRT/resolve/main/ppocr_det_fp16.tflite",
+        "input_size": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "input_layout": "nchw",
+        "color_space": "rgb",
+        "normalize": {
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ]
+        },
+        "resize": "stretch",
+        "then": "prob_map_to_regions",
+        "options": {
+          "threshold": 0.3,
+          "min_score": 0.5,
+          "max_detections": 50
+        }
+      },
+      {
+        "id": "rec",
+        "model_url": "https://huggingface.co/litert-community/PP-OCRv5-LiteRT/resolve/main/ppocr_rec_fp32.tflite",
+        "model_url_webgpu": "https://huggingface.co/litert-community/PP-OCRv5-LiteRT/resolve/main/ppocr_rec_fp32_webgpu.tflite",
+        "for_each": "det",
+        "input_size": [
+          1,
+          3,
+          48,
+          320
+        ],
+        "input_layout": "nchw",
+        "color_space": "rgb",
+        "normalize": {
+          "mean": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "std": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "resize": "keep_aspect_pad",
+        "pad_value": -1,
+        "then": "ctc_decode"
+      }
+    ],
+    "assets": {
+      "dict": "https://huggingface.co/litert-community/PP-OCRv5-LiteRT/resolve/main/ppocrv5_dict.txt"
+    },
+    "result": "ocr"
+  }
+}
